@@ -4,7 +4,9 @@ class Jogo:
         self.letras = [False]*len(palavra)
         self.fim_de_jogo = False
         self.ganhou = False
-        self.vida = 5
+        self.vida = 7
+        self.letras_erradas = []
+        self.letras_ja_digitadas = []
 
     def rodar(self):
         self.mostrar()
@@ -13,12 +15,21 @@ class Jogo:
         print()
 
     def mostrar(self):
-        print(f'Vida: {self.vida}')
-        print(f'Palavra: {self.palavra}')
-        print(f'Letras: {self.letras}') 
+        print()
+        self.mostrarLetrasErradas()
+        self.mostrarForca()
+        print()
+        self.mostrarPalavra()
+
 
     def lerLetra(self):
-        return input('Digite a letra: ')
+        letra = input('Digite a letra: ').lower()
+        while letra in self.letras_ja_digitadas:
+            letra = input('Digite outra letra: ').lower()
+
+        self.letras_ja_digitadas.append(letra)
+        
+        return letra
 
     def logica(self, letra):
         acertou = False
@@ -29,6 +40,7 @@ class Jogo:
 
         if not acertou:
             self.vida -= 1
+            self.letras_erradas.append(letra)
 
         if all(self.letras):
             self.fim_de_jogo = True
@@ -38,6 +50,73 @@ class Jogo:
             self.fim_de_jogo = True
             self.ganhou = False
 
+    def mostrarPalavra(self):
+        print("Palavra: ", end = " ")
+        for n, l in enumerate(self.letras):
+            if not l:
+                print("_", end = "")
+            else:
+                print(self.palavra[n], end = "")
+        print()
+
+    def mostrarLetrasErradas(self):
+        if len(self.letras_erradas) != 0:
+            print("Letras erradas já digitadas:", end = " ")
+            for e in self.letras_erradas:
+                print(e, end= " ")
+            print()
+
+
+    def mostrarForca(self):
+        if self.vida == 7:
+            print(" _______")
+            print("|       |")
+            print("|      (_)")
+            print("|     \ | /")
+            print("|       |")
+            print("|     /   \ ")
+        elif self.vida == 6:
+            print(" _______")
+            print("|       |")
+            print("|      (_)")
+            print("|     \ | /")
+            print("|       |")
+            print("|     /    ")
+        elif self.vida == 5:
+            print(" _______")
+            print("|       |")
+            print("|      (_)")
+            print("|     \ | /")
+            print("|       |")
+            print("|")
+        elif self.vida == 4:
+            print(" _______")
+            print("|       |")
+            print("|      (_)")
+            print("|     \ | /")
+            print("|")
+            print("|")
+        elif self.vida == 3:
+            print(" _______")
+            print("|       |")
+            print("|      (_)")
+            print("|     \ | ")
+            print("|")
+            print("|")
+        elif self.vida == 2:
+            print(" _______")
+            print("|       |")
+            print("|      (_)")
+            print("|       | ")
+            print("|")
+            print("|")
+        elif self.vida == 1:
+            print(" _______")
+            print("|       |")
+            print("|      (_)")
+            print("|")
+            print("|")
+            print("|")
 
 palavra = 'chocolate'
 jogo = Jogo(palavra)
@@ -52,4 +131,3 @@ if jogo.ganhou:
     print('Voce ganhou')
 else:
     print('Voce perdeu')
-
