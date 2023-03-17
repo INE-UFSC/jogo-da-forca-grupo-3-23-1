@@ -1,4 +1,5 @@
 from main import Jogo
+from palavras import palavras
 
 class Menu():
     def __init__(self):
@@ -13,8 +14,8 @@ class Menu():
 
             #jogo
             if option == "1":
-                palavra = input("Digite a palavra desejada para o jogo.")
-                jogo = Jogo(palavra)
+                palavra = palavras()
+                jogo = Jogo(palavra.get_palavra())
                 while True:
                     jogo.rodar()
                     if jogo.fim_de_jogo:
