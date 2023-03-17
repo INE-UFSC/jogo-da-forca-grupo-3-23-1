@@ -10,7 +10,7 @@ class Menu():
         print("2. Sair.")
         option = input("Digite o que voce deseja fazer.")
         while True:
-            
+
             #jogo
             if option == "1":
                 palavra = input("Digite a palavra desejada para o jogo.")
@@ -28,6 +28,12 @@ class Menu():
                     else:
                         break
                 else:
+                    print(" _______")
+                    print("|       |")
+                    print("|      (_)")
+                    print("|     \ | /")
+                    print("|       |")
+                    print("|     /   \\")
                     print('Voce perdeu')
                     again = input("Deseja jogar novamente? (y/n)")
                     if again == "y":
