@@ -117,17 +117,3 @@ class Jogo:
             print("|")
             print("|")
             print("|")
-
-palavra = 'chocolate'
-jogo = Jogo(palavra)
-
-while True:
-    jogo.rodar()
-
-    if jogo.fim_de_jogo:
-        break
-
-if jogo.ganhou:
-    print('Voce ganhou')
-else:
-    print('Voce perdeu')
