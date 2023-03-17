@@ -24,8 +24,8 @@ class Jogo:
 
     def lerLetra(self):
         letra = input('Digite a letra: ').lower()
-        while letra in self.letras_ja_digitadas:
-            letra = input('Digite outra letra: ').lower()
+        while len(letra) != 1 or letra in self.letras_ja_digitadas:
+            letra = input('Digite apenas 1 letra ainda não digitada: ').lower()
 
         self.letras_ja_digitadas.append(letra)
         
@@ -71,52 +71,53 @@ class Jogo:
         if self.vida == 7:
             print(" _______")
             print("|       |")
-            print("|      (_)")
-            print("|     \ | /")
-            print("|       |")
-            print("|     /   \ ")
+            print("|")
+            print("|")
+            print("|")
+            print("|")
         elif self.vida == 6:
             print(" _______")
             print("|       |")
             print("|      (_)")
-            print("|     \ | /")
-            print("|       |")
-            print("|     /    ")
+            print("|")
+            print("|")
+            print("|")
         elif self.vida == 5:
             print(" _______")
             print("|       |")
             print("|      (_)")
-            print("|     \ | /")
             print("|       |")
+            print("|")
             print("|")
         elif self.vida == 4:
             print(" _______")
             print("|       |")
             print("|      (_)")
-            print("|     \ | /")
+            print("|     \ |")
             print("|")
             print("|")
         elif self.vida == 3:
             print(" _______")
             print("|       |")
             print("|      (_)")
-            print("|     \ | ")
+            print("|     \ | /")
             print("|")
             print("|")
         elif self.vida == 2:
             print(" _______")
             print("|       |")
             print("|      (_)")
-            print("|       | ")
+            print("|     \ | /")
+            print("|       |")
             print("|")
-            print("|")
+
         elif self.vida == 1:
             print(" _______")
             print("|       |")
             print("|      (_)")
-            print("|")
-            print("|")
-            print("|")
+            print("|     \ | /")
+            print("|       |")
+            print("|     /")
 
 palavra = 'chocolate'
 jogo = Jogo(palavra)
@@ -130,4 +131,10 @@ while True:
 if jogo.ganhou:
     print('Voce ganhou')
 else:
+    print(" _______")
+    print("|       |")
+    print("|      (_)")
+    print("|     \ | /")
+    print("|       |")
+    print("|     /   \\")
     print('Voce perdeu')
